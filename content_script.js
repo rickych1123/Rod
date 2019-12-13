@@ -139,11 +139,12 @@ $(function() {
 
       $('.table_simple:eq(0) tr:eq('+ i +') input:radio').attr("checked", true);
       first_train_time = parseInt($('.table_simple tr:eq('+ i +') td:eq(3) span').html().replace(':', ''));
+      travel_time = parseInt($('.table_simple tr:eq('+ i +') td:eq(5) span').html().replace(':', ''));
 
       station_start_time = parseInt(info.station.start_time.replace(':', ''));
       station_end_time   = parseInt(info.station.end_time.replace(':', ''));
 
-      if ( first_train_time >= station_start_time && first_train_time <= station_end_time) {
+      if ( first_train_time >= station_start_time && first_train_time <= station_end_time && travel_time < 140) {
         $('input[name="SubmitButton"]').trigger('click');
         return false;
       } else {
